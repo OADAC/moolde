@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>moolde | Sistema de Encofrado Inteligente con Blockchain</title>
+    <title>moolde | Sistema de Encofrado Sostenible con Blockchain</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --steel-dark: #2C3539;
-            --steel-medium: #4A5859;
-            --steel-light: #7A8B8C;
-            --concrete: #E8EDF0;
+            /* moolde Brand Colors */
+            --primary-dark: #1A1D2E;
+            --primary-blue: #2C3E7A;
+            --accent-teal: #4ECDC4;
+            --green: #95E1D3;
+            --coral: #FF6B6B;
+            
+            /* Supporting Colors */
             --white: #FFFFFF;
-            --eco-green: #1B5E20;
-            --eco-light: #4CAF50;
-            --innovation-amber: #FF8F00;
-            --innovation-light: #FFB300;
-            --tech-blue: #0277BD;
-            --tech-cyan: #00ACC1;
-            --gradient-industrial: linear-gradient(135deg, #2C3539 0%, #4A5859 100%);
-            --gradient-eco: linear-gradient(135deg, #1B5E20 0%, #4CAF50 100%);
-            --gradient-tech: linear-gradient(135deg, #0277BD 0%, #00ACC1 100%);
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+            --light-gray: #F7F7F7;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #333333;
+            
+            /* Effects */
+            --shadow-sm: 0 2px 8px rgba(26, 29, 46, 0.08);
+            --shadow-md: 0 4px 16px rgba(26, 29, 46, 0.12);
+            --shadow-lg: 0 8px 32px rgba(26, 29, 46, 0.16);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         * {
@@ -33,17 +35,16 @@
         }
         
         body {
-            font-family: 'Source Sans 3', sans-serif;
-            color: var(--steel-dark);
+            font-family: 'Barlow', sans-serif;
+            color: var(--dark-gray);
             background-color: var(--white);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Exo 2', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            line-height: 1.2;
         }
         
         .container {
@@ -53,56 +54,121 @@
             padding: 0 24px;
         }
         
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            z-index: 1000;
-            transition: all 0.3s ease;
+        /* Header Hero */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
         }
         
-        header.scrolled {
-            box-shadow: var(--shadow);
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--accent-teal);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(100px);
         }
         
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
         }
         
-        .logo {
-            font-family: 'Exo 2', sans-serif;
-            font-size: 32px;
+        .moolde-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
             font-weight: 800;
-            color: var(--steel-dark);
-            letter-spacing: -1px;
-            text-decoration: none;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .logo span {
-            color: var(--eco-green);
+        .hero-headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        .hero-subheadline {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 48px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-teal);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+        
+        /* Navigation */
+        .nav-bar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+        
+        .nav-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        .nav-logo span {
+            color: var(--accent-teal);
         }
         
         .nav-links {
             display: flex;
             list-style: none;
             gap: 32px;
-            align-items: center;
         }
         
         .nav-links a {
+            font-weight: 500;
+            color: var(--dark-gray);
             text-decoration: none;
-            color: var(--steel-medium);
-            font-weight: 600;
-            font-size: 15px;
-            transition: color 0.3s ease;
+            transition: var(--transition);
             position: relative;
         }
         
@@ -113,381 +179,598 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--eco-green);
-            transition: width 0.3s ease;
+            background: var(--accent-teal);
+            transition: var(--transition);
         }
         
         .nav-links a:hover {
-            color: var(--eco-green);
+            color: var(--primary-blue);
         }
         
         .nav-links a:hover::after {
             width: 100%;
         }
         
-        .btn-primary {
-            background: var(--gradient-eco);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Buttons */
+        .btn {
             display: inline-block;
+            padding: 14px 32px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--accent-teal);
+            color: var(--white);
         }
         
         .btn-primary:hover {
+            background: var(--primary-blue);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(27, 94, 32, 0.3);
+            box-shadow: var(--shadow-md);
         }
         
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            background: linear-gradient(135deg, #2C3539 0%, #1B5E20 100%);
-            color: white;
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="white" opacity="0.03"/></svg>');
-            background-size: 40px 40px;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 64px;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .hero h1 span {
-            color: var(--innovation-amber);
-        }
-        
-        .hero-subtitle {
-            font-size: 24px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            font-weight: 300;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
-        }
-        
-        .btn-hero {
-            padding: 16px 40px;
-            border-radius: 10px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 18px;
-        }
-        
-        .btn-hero-primary {
-            background: white;
-            color: var(--eco-green);
-        }
-        
-        .btn-hero-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(255,255,255,0.3);
-        }
-        
-        .btn-hero-secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        
-        .btn-hero-secondary:hover {
-            background: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.5);
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-dark);
         }
         
         /* Section Styles */
-        section {
+        .section {
             padding: 100px 0;
+        }
+        
+        .section-alt {
+            background: var(--light-gray);
         }
         
         .section-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 60px;
+            margin: 0 auto 64px;
         }
         
         .section-label {
-            font-size: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--eco-green);
+            color: var(--accent-teal);
             margin-bottom: 16px;
         }
         
         .section-title {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: var(--steel-dark);
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
         }
         
         .section-description {
-            font-size: 20px;
-            color: var(--steel-medium);
-            line-height: 1.6;
+            font-size: 1.125rem;
+            color: var(--dark-gray);
+            opacity: 0.8;
         }
         
-        /* About Section */
-        .about {
-            background: var(--concrete);
-        }
-        
-        .about-content {
+        /* Technical Specs Grid */
+        .specs-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
         }
         
-        .about-text h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: var(--eco-green);
+        .spec-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--medium-gray);
         }
         
-        .about-text p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            line-height: 1.8;
+        .spec-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-teal);
         }
         
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 30px;
+        .spec-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--green) 100%);
             border-radius: 12px;
-            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
         }
         
-        .stat-number {
-            font-size: 48px;
+        .spec-icon i {
+            font-size: 28px;
+            color: var(--white);
+        }
+        
+        .spec-title {
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        
+        .spec-value {
+            font-size: 2.5rem;
             font-weight: 800;
-            color: var(--eco-green);
+            color: var(--accent-teal);
             margin-bottom: 8px;
         }
         
-        .stat-label {
-            font-size: 16px;
-            color: var(--steel-medium);
+        .spec-unit {
+            font-size: 1rem;
             font-weight: 600;
+            color: var(--primary-blue);
         }
         
-        /* System Components */
-        .system-grid {
+        .spec-description {
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+            opacity: 0.8;
+            margin-top: 16px;
+        }
+        
+        .spec-certification {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 12px;
+            background: var(--light-gray);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        /* Reinforcement Systems */
+        .systems-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
         }
         
-        .component-card {
-            background: white;
+        .system-card {
+            background: var(--white);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
         
-        .component-card:hover {
+        .system-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
         }
         
-        .component-icon {
-            background: var(--gradient-industrial);
-            padding: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .component-icon i {
-            font-size: 64px;
-            color: white;
-        }
-        
-        .component-content {
+        .system-header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: var(--white);
             padding: 32px;
         }
         
-        .component-content h3 {
-            font-size: 24px;
+        .system-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--accent-teal);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 16px;
-            color: var(--steel-dark);
         }
         
-        .component-content p {
-            color: var(--steel-medium);
-            line-height: 1.7;
+        .system-title {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        
+        .system-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .system-content {
+            padding: 32px;
+        }
+        
+        .system-feature {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 20px;
         }
         
-        .component-features {
+        .system-feature:last-child {
+            margin-bottom: 0;
+        }
+        
+        .system-feature-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--green);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        .system-feature-icon i {
+            font-size: 16px;
+            color: var(--primary-dark);
+        }
+        
+        .system-feature-text h4 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        
+        .system-feature-text p {
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+        
+        /* CUEVA Technology Section */
+        .cueva-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cueva-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--accent-teal);
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+        
+        .cueva-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cueva-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 48px;
+        }
+        
+        .cueva-info h3 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+        
+        .cueva-features {
             list-style: none;
         }
         
-        .component-features li {
-            padding: 8px 0;
-            color: var(--steel-medium);
+        .cueva-feature {
             display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .component-features li i {
-            color: var(--eco-green);
-            font-size: 12px;
-        }
-        
-        /* Technical Specifications */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        
-        .spec-category {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-        
-        .spec-category h3 {
-            font-size: 24px;
+            align-items: flex-start;
             margin-bottom: 24px;
-            color: var(--steel-dark);
+        }
+        
+        .cueva-feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-teal);
+            border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
         }
         
-        .spec-category h3 i {
-            color: var(--innovation-amber);
+        .cueva-feature-icon i {
+            font-size: 20px;
+            color: var(--primary-dark);
         }
         
-        .spec-table {
-            width: 100%;
+        .cueva-feature-text h4 {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
         }
         
-        .spec-table tr {
-            border-bottom: 1px solid var(--concrete);
+        .cueva-feature-text p {
+            opacity: 0.9;
         }
         
-        .spec-table td {
-            padding: 16px 0;
+        .cueva-diagram {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
         }
         
-        .spec-table td:first-child {
-            font-weight: 600;
-            color: var(--steel-medium);
-            width: 50%;
+        .blockchain-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
         
-        .spec-table td:last-child {
-            color: var(--steel-dark);
+        .flow-step {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-teal);
+        }
+        
+        .flow-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
+            color: var(--primary-dark);
+            margin-right: 16px;
+            flex-shrink: 0;
         }
         
-        /* Applications */
-        .applications {
-            background: var(--concrete);
+        .flow-text {
+            flex: 1;
         }
         
-        .applications-grid {
+        .flow-text h5 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        
+        .flow-text p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        /* Comparison Table */
+        .comparison-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: 48px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table thead {
+            background: var(--primary-dark);
+            color: var(--white);
+        }
+        
+        .comparison-table th {
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .comparison-table tbody tr:hover {
+            background: var(--light-gray);
+        }
+        
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .advantage {
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+        
+        .disadvantage {
+            color: var(--coral);
+        }
+        
+        /* Economic Analysis */
+        .economic-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-top: 48px;
+            align-items: center;
+        }
+        
+        .chart-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .chart-title {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 300px;
+            margin-bottom: 32px;
+        }
+        
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .bar {
+            width: 60px;
+            border-radius: 8px 8px 0 0;
+            transition: height 1.5s ease;
+            margin-bottom: 16px;
+        }
+        
+        .bar-moolde {
+            background: linear-gradient(180deg, var(--accent-teal) 0%, var(--green) 100%);
+        }
+        
+        .bar-wood {
+            background: linear-gradient(180deg, var(--coral) 0%, #ff8787 100%);
+        }
+        
+        .bar-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            text-align: center;
+        }
+        
+        .chart-legend {
+            display: flex;
+            justify-content: center;
             gap: 32px;
         }
         
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .legend-moolde {
+            background: var(--accent-teal);
+        }
+        
+        .legend-wood {
+            background: var(--coral);
+        }
+        
+        .economic-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .highlight-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--accent-teal);
+        }
+        
+        .highlight-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        
+        .highlight-card p {
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+        
+        .highlight-stat {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-teal);
+            margin: 16px 0 8px;
+        }
+        
+        /* Applications Gallery */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
         .application-card {
-            background: white;
+            background: var(--white);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
         }
         
         .application-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
         
         .application-image {
             height: 200px;
-            background: var(--gradient-industrial);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .application-image i {
-            font-size: 72px;
-            color: white;
-            opacity: 0.9;
+            color: var(--white);
+            font-size: 4rem;
         }
         
         .application-content {
-            padding: 32px;
+            padding: 24px;
         }
         
-        .application-content h3 {
-            font-size: 22px;
+        .application-title {
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        
+        .application-description {
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+            opacity: 0.8;
             margin-bottom: 16px;
-            color: var(--steel-dark);
-        }
-        
-        .application-content p {
-            color: var(--steel-medium);
-            line-height: 1.7;
-            margin-bottom: 20px;
         }
         
         .application-tags {
@@ -497,757 +780,73 @@
         }
         
         .tag {
-            background: var(--concrete);
-            color: var(--eco-green);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 13px;
+            padding: 6px 12px;
+            background: var(--light-gray);
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 600;
+            color: var(--primary-blue);
         }
         
-        /* Reinforcement Systems */
-        .reinforcement-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        
-        .reinforcement-card {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-        
-        .reinforcement-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        
-        .reinforcement-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-tech);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .reinforcement-icon i {
-            font-size: 36px;
-            color: white;
-        }
-        
-        .reinforcement-title h3 {
-            font-size: 24px;
-            color: var(--steel-dark);
-            margin-bottom: 4px;
-        }
-        
-        .reinforcement-subtitle {
-            color: var(--tech-blue);
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .reinforcement-features {
-            list-style: none;
-        }
-        
-        .reinforcement-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--concrete);
-            display: flex;
-            gap: 12px;
-        }
-        
-        .reinforcement-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .reinforcement-features i {
-            color: var(--tech-cyan);
-            margin-top: 4px;
-        }
-        
-        /* Economic Analysis */
-        .economic {
-            background: var(--concrete);
-        }
-        
-        .economic-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .economic-text h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: var(--steel-dark);
-        }
-        
-        .economic-text p {
-            font-size: 18px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-            color: var(--steel-medium);
-        }
-        
-        .economic-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .highlight-card {
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-        
-        .highlight-value {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--eco-green);
-            margin-bottom: 8px;
-        }
-        
-        .highlight-label {
-            font-size: 14px;
-            color: var(--steel-medium);
-            font-weight: 600;
-        }
-        
-        .comparison-chart {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-        
-        .comparison-chart h4 {
-            text-align: center;
-            margin-bottom: 32px;
-            color: var(--steel-dark);
-            font-size: 20px;
-        }
-        
-        .chart-bars {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        
-        .chart-row {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .chart-label {
-            width: 120px;
-            font-weight: 600;
-            color: var(--steel-medium);
-            font-size: 14px;
-        }
-        
-        .chart-bar-container {
-            flex: 1;
-            background: var(--concrete);
-            border-radius: 8px;
-            height: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .chart-bar {
-            height: 100%;
-            background: var(--gradient-eco);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 0 12px;
-            transition: width 1s ease;
-        }
-        
-        .chart-bar.alt {
-            background: var(--gradient-industrial);
-        }
-        
-        .chart-value {
-            color: white;
-            font-weight: 700;
-            font-size: 13px;
-        }
-        
-        /* Sustainability */
-        .sustainability-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        .sustainability-feature {
-            text-align: center;
-            padding: 40px 30px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-        
-        .sustainability-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--gradient-eco);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-        
-        .sustainability-icon i {
-            font-size: 48px;
-            color: white;
-        }
-        
-        .sustainability-feature h3 {
-            font-size: 22px;
-            margin-bottom: 16px;
-            color: var(--steel-dark);
-        }
-        
-        .sustainability-feature p {
-            color: var(--steel-medium);
-            line-height: 1.7;
-        }
-        
-        .lifecycle-diagram {
-            background: white;
-            padding: 60px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-teal) 0%, var(--green) 100%);
+            padding: 100px 0;
             text-align: center;
         }
         
-        .lifecycle-diagram h3 {
-            font-size: 28px;
-            margin-bottom: 40px;
-            color: var(--steel-dark);
-        }
-        
-        .lifecycle-steps {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .lifecycle-step {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .lifecycle-step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-eco);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-        
-        .lifecycle-step-icon i {
-            font-size: 32px;
-            color: white;
-        }
-        
-        .lifecycle-step h4 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: var(--steel-dark);
-        }
-        
-        .lifecycle-step p {
-            font-size: 13px;
-            color: var(--steel-medium);
-        }
-        
-        .lifecycle-arrow {
-            font-size: 24px;
-            color: var(--eco-light);
-        }
-        
-        /* LEVEL(s) Framework */
-        .levels {
-            background: var(--concrete);
-        }
-        
-        .levels-intro {
-            max-width: 900px;
-            margin: 0 auto 60px;
-            text-align: center;
-        }
-        
-        .levels-intro p {
-            font-size: 18px;
-            color: var(--steel-medium);
-            line-height: 1.8;
-        }
-        
-        .levels-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        
-        .level-card {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-        
-        .level-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-tech);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .level-card h3 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: var(--steel-dark);
-        }
-        
-        .level-card p {
-            color: var(--steel-medium);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        
-        .level-indicators {
-            list-style: none;
-        }
-        
-        .level-indicators li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--steel-medium);
-        }
-        
-        .level-indicators i {
-            color: var(--tech-cyan);
-            font-size: 10px;
-        }
-        
-        /* Digital Product Passport */
-        .dpp-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .dpp-visual {
-            background: white;
-            padding: 60px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .passport-icon {
-            width: 200px;
-            height: 280px;
-            background: var(--gradient-tech);
-            border-radius: 20px;
-            margin: 0 auto 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            box-shadow: 0 20px 60px rgba(2, 119, 189, 0.3);
-        }
-        
-        .passport-icon i {
-            font-size: 72px;
-            color: white;
-        }
-        
-        .passport-qr {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .passport-qr i {
-            font-size: 64px;
-            color: var(--tech-blue);
-        }
-        
-        .dpp-features {
-            list-style: none;
-        }
-        
-        .dpp-features li {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--concrete);
-            display: flex;
-            gap: 20px;
-        }
-        
-        .dpp-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .dpp-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--concrete);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .dpp-icon i {
-            font-size: 20px;
-            color: var(--tech-blue);
-        }
-        
-        .dpp-text h4 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--steel-dark);
-        }
-        
-        .dpp-text p {
-            color: var(--steel-medium);
-            line-height: 1.6;
-        }
-        
-        /* UN SDGs */
-        .sdg {
-            background: var(--concrete);
-        }
-        
-        .sdg-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-        }
-        
-        .sdg-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .sdg-card:hover {
-            transform: translateY(-8px);
-        }
-        
-        .sdg-header {
-            padding: 32px 24px;
-            color: white;
-            text-align: center;
-        }
-        
-        .sdg-header.sdg-9 {
-            background: linear-gradient(135deg, #FD6925 0%, #FF8F4D 100%);
-        }
-        
-        .sdg-header.sdg-11 {
-            background: linear-gradient(135deg, #FD9D24 0%, #FDB44D 100%);
-        }
-        
-        .sdg-header.sdg-12 {
-            background: linear-gradient(135deg, #BF8B2E 0%, #D4A03E 100%);
-        }
-        
-        .sdg-header.sdg-13 {
-            background: linear-gradient(135deg, #3F7E44 0%, #56A05B 100%);
-        }
-        
-        .sdg-number {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        
-        .sdg-title {
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        
-        .sdg-content {
-            padding: 24px;
-        }
-        
-        .sdg-content p {
-            color: var(--steel-medium);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-        
-        .sdg-impact {
-            background: var(--concrete);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--steel-dark);
-        }
-        
-        /* R&D Section */
-        .rdi-timeline {
-            position: relative;
-            max-width: 1000px;
+        .cta-content {
+            max-width: 700px;
             margin: 0 auto;
         }
         
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--concrete);
-            transform: translateX(-50%);
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
         }
         
-        .timeline-item {
-            display: flex;
-            gap: 60px;
-            margin-bottom: 80px;
-            position: relative;
+        .cta-section p {
+            font-size: 1.125rem;
+            color: var(--primary-dark);
+            opacity: 0.9;
+            margin-bottom: 40px;
         }
         
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
+        .btn-cta {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 16px 40px;
+            font-size: 1.125rem;
         }
         
-        .timeline-content {
-            flex: 1;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 40px;
-            width: 24px;
-            height: 24px;
-            background: var(--innovation-amber);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 0 8px var(--concrete);
-        }
-        
-        .timeline-content h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: var(--steel-dark);
-        }
-        
-        .timeline-content p {
-            color: var(--steel-medium);
-            line-height: 1.7;
-        }
-        
-        .research-areas {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 80px;
-        }
-        
-        .research-card {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .research-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--innovation-amber), var(--innovation-light));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-        
-        .research-icon i {
-            font-size: 36px;
-            color: white;
-        }
-        
-        .research-card h4 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: var(--steel-dark);
-        }
-        
-        .research-card p {
-            color: var(--steel-medium);
-            line-height: 1.7;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background: var(--gradient-industrial);
-            color: white;
-            text-align: center;
-        }
-        
-        .contact .section-label {
-            color: var(--innovation-light);
-        }
-        
-        .contact .section-title {
-            color: white;
-        }
-        
-        .contact .section-description {
-            color: rgba(255,255,255,0.9);
-        }
-        
-        .contact-form {
-            max-width: 700px;
-            margin: 60px auto 0;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 50px;
-            border-radius: 20px;
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group.full {
-            grid-column: 1 / -1;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 10px;
-            background: rgba(255,255,255,0.05);
-            color: white;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--innovation-light);
-            background: rgba(255,255,255,0.1);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        .btn-submit {
-            width: 100%;
-            padding: 18px;
-            background: var(--innovation-amber);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-submit:hover {
-            background: var(--innovation-light);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(255, 143, 0, 0.4);
+        .btn-cta:hover {
+            background: var(--primary-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
         
         /* Footer */
-        footer {
-            background: var(--steel-dark);
-            color: rgba(255,255,255,0.8);
-            padding: 80px 0 30px;
+        .footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 80px 0 40px;
         }
         
-        .footer-content {
+        .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 48px;
+            margin-bottom: 48px;
         }
         
         .footer-brand h3 {
-            font-size: 32px;
-            color: white;
+            font-size: 2rem;
             margin-bottom: 16px;
         }
         
         .footer-brand p {
-            line-height: 1.8;
+            opacity: 0.8;
             margin-bottom: 24px;
         }
         
@@ -1256,1056 +855,933 @@
             gap: 16px;
         }
         
-        .social-links a {
-            width: 48px;
-            height: 48px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        .social-links a:hover {
-            background: var(--eco-green);
-            transform: translateY(-4px);
+        .social-link:hover {
+            background: var(--accent-teal);
+            transform: translateY(-2px);
         }
         
-        .footer-links h4 {
-            color: white;
+        .footer-column h4 {
+            font-size: 1.125rem;
             margin-bottom: 20px;
-            font-size: 18px;
         }
         
-        .footer-links ul {
+        .footer-links {
             list-style: none;
         }
         
-        .footer-links ul li {
+        .footer-links li {
             margin-bottom: 12px;
         }
         
-        .footer-links ul li a {
-            color: rgba(255,255,255,0.7);
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
         }
         
-        .footer-links ul li a:hover {
-            color: var(--eco-light);
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-teal);
         }
         
         .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 14px;
+            opacity: 0.6;
+            font-size: 0.875rem;
         }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
         
         /* Responsive */
         @media (max-width: 1024px) {
-            .system-grid,
-            .applications-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .cueva-grid,
+            .economic-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
             
-            .sdg-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
+            .systems-grid {
+                grid-template-columns: 1fr;
             }
         }
         
         @media (max-width: 768px) {
+            .hero-header {
+                padding: 80px 0 60px;
+            }
+            
+            .moolde-logo {
+                font-size: 3rem;
+            }
+            
+            .hero-headline {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
             .nav-links {
                 display: none;
             }
             
-            .hero h1 {
-                font-size: 40px;
-            }
-            
-            .hero-subtitle {
-                font-size: 18px;
-            }
-            
-            .system-grid,
-            .applications-grid,
             .specs-grid,
-            .reinforcement-grid,
-            .sustainability-content,
-            .levels-grid,
-            .research-areas {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-content,
-            .economic-content,
-            .dpp-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .sdg-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                flex-direction: column !important;
-                padding-left: 40px;
-            }
-            
-            .timeline-line {
-                left: 20px;
-            }
-            
-            .timeline-dot {
-                left: 20px;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
+            .applications-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <nav class="container">
-            <a href="#" class="logo">moolde<span>.</span></a>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <div class="nav-logo">moolde</div>
             <ul class="nav-links">
-                <li><a href="#sistema">Sistema</a></li>
+                <li><a href="#especificaciones">Especificaciones</a></li>
+                <li><a href="#sistemas">Sistemas</a></li>
+                <li><a href="#cueva">CUEVA Tech</a></li>
+                <li><a href="#comparativa">Comparativa</a></li>
+                <li><a href="#economia">Economía</a></li>
                 <li><a href="#aplicaciones">Aplicaciones</a></li>
-                <li><a href="#sostenibilidad">Sostenibilidad</a></li>
-                <li><a href="#tecnologia">Tecnología</a></li>
-                <li><a href="#contacto" class="btn-primary">Contactar</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="moolde-logo">moolde</h1>
+                <h2 class="hero-headline">Sistema de Encofrado Sostenible con Tecnología Blockchain</h2>
+                <p class="hero-subheadline">
+                    Transformando plástico irreciclable en sistemas modulares de construcción certificados, 
+                    trazables y completamente sostenibles. Construction 4.0 con CUEVA technology.
+                </p>
+                <div>
+                    <a href="#especificaciones" class="btn btn-primary">Especificaciones Técnicas</a>
+                    <a href="#cueva" class="btn btn-secondary">Tecnología CUEVA</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">30-50</span>
+                        <span class="stat-label">Ciclos de Uso</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0.10%</span>
+                        <span class="stat-label">Absorción de Agua</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Plástico Reciclado</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">40-60%</span>
+                        <span class="stat-label">Ahorro a Largo Plazo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content container">
-            <h1>Construye el futuro con <span>inteligencia</span></h1>
-            <p class="hero-subtitle">Sistema de encofrado modular con plástico reciclado irreciclable y tecnología blockchain integrada</p>
-            <div class="hero-cta">
-                <a href="#sistema" class="btn-hero btn-hero-primary">Descubre moolde</a>
-                <a href="#contacto" class="btn-hero btn-hero-secondary">Solicitar Demo</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="sobre">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Transformando residuos en infraestructura</h3>
-                    <p><strong>moolde</strong> es el primer sistema de encofrado modular fabricado con plástico reciclado irreciclable, integrando tecnología blockchain CUEVA para trazabilidad completa.</p>
-                    <p>Combinamos sostenibilidad con innovación tecnológica para ofrecer una solución constructiva que reduce costos, mejora la eficiencia y protege el medio ambiente.</p>
-                    <p>Cada panel Plastic Board viene equipado con chips inteligentes que registran su ciclo de vida completo en blockchain, garantizando transparencia y certificación en cada etapa.</p>
-                    
-                    <div class="about-stats">
-                        <div class="stat-card">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Plástico Reciclado</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">30-50</div>
-                            <div class="stat-label">Ciclos de Uso</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">0.10%</div>
-                            <div class="stat-label">Absorción de Agua</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">40-60%</div>
-                            <div class="stat-label">Ahorro a Largo Plazo</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <!-- Aquí iría una imagen del sistema -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- System Components -->
-    <section id="sistema">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">EL SISTEMA COMPLETO</div>
-                <h2 class="section-title">Tres componentes, una solución integral</h2>
-                <p class="section-description">moolde integra material innovador, estructura inteligente y tecnología blockchain en un sistema cohesivo</p>
-            </div>
-            
-            <div class="system-grid">
-                <div class="component-card">
-                    <div class="component-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div class="component-content">
-                        <h3>Plastic Board</h3>
-                        <p>Panel de encofrado fabricado con plástico reciclado irreciclable, diseñado para máxima durabilidad y reutilización.</p>
-                        <ul class="component-features">
-                            <li><i class="fas fa-circle"></i> Resistencia excepcional a la humedad</li>
-                            <li><i class="fas fa-circle"></i> 30-50 ciclos de uso garantizados</li>
-                            <li><i class="fas fa-circle"></i> Superficie lisa para acabados de calidad</li>
-                            <li><i class="fas fa-circle"></i> Ligero y fácil de manipular</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="component-card">
-                    <div class="component-icon">
-                        <i class="fas fa-chess-board"></i>
-                    </div>
-                    <div class="component-content">
-                        <h3>Estructura de Soporte</h3>
-                        <p>Sistema modular de refuerzo que garantiza estabilidad estructural y adaptabilidad a cualquier proyecto.</p>
-                        <ul class="component-features">
-                            <li><i class="fas fa-circle"></i> Marcos metálicos perimetrales</li>
-                            <li><i class="fas fa-circle"></i> Nervaduras posteriores reforzadas</li>
-                            <li><i class="fas fa-circle"></i> Sistemas de alma de panal</li>
-                            <li><i class="fas fa-circle"></i> Configuración híbrida adaptable</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="component-card">
-                    <div class="component-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <div class="component-content">
-                        <h3>Tecnología CUEVA</h3>
-                        <p>Chips inteligentes integrados con blockchain para trazabilidad completa del ciclo de vida del material.</p>
-                        <ul class="component-features">
-                            <li><i class="fas fa-circle"></i> Registro inmutable en blockchain</li>
-                            <li><i class="fas fa-circle"></i> Trazabilidad completa del material</li>
-                            <li><i class="fas fa-circle"></i> Certificación digital automática</li>
-                            <li><i class="fas fa-circle"></i> Pasaporte digital de producto (DPP)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Technical Specifications -->
-    <section id="especificaciones">
+    <section class="section" id="especificaciones">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">ESPECIFICACIONES TÉCNICAS</div>
-                <h2 class="section-title">Propiedades verificadas en laboratorio</h2>
+                <div class="section-label">Certificado por AIJU</div>
+                <h2 class="section-title">Especificaciones Técnicas Certificadas</h2>
+                <p class="section-description">
+                    Todas las propiedades han sido certificadas por el laboratorio AIJU (Instituto Tecnológico 
+                    de Producto Infantil y Ocio) según normativas UNE EN ISO.
+                </p>
             </div>
             
             <div class="specs-grid">
-                <div class="spec-category">
-                    <h3><i class="fas fa-weight-hanging"></i> Propiedades Mecánicas</h3>
-                    <table class="spec-table">
-                        <tr>
-                            <td>Módulo de tracción</td>
-                            <td>443 ± 15.5 MPa</td>
-                        </tr>
-                        <tr>
-                            <td>Resistencia a la tracción</td>
-                            <td>12.7 ± 0.126 MPa</td>
-                        </tr>
-                        <tr>
-                            <td>Módulo de flexión</td>
-                            <td>578 ± 16.8 MPa</td>
-                        </tr>
-                        <tr>
-                            <td>Resistencia a la flexión</td>
-                            <td>17.0 ± 0.061 MPa</td>
-                        </tr>
-                        <tr>
-                            <td>Resistencia al impacto Charpy</td>
-                            <td>33 ± 4.4 kJ/m²</td>
-                        </tr>
-                    </table>
+                <div class="spec-card fade-in">
+                    <div class="spec-icon">
+                        <i class="fas fa-tint-slash"></i>
+                    </div>
+                    <h3 class="spec-title">Absorción de Agua</h3>
+                    <div>
+                        <span class="spec-value">0.10</span>
+                        <span class="spec-unit">%</span>
+                    </div>
+                    <p class="spec-description">
+                        Resistencia excepcional a la humedad, 150-200 veces superior a la madera. 
+                        Garantiza estabilidad dimensional en cualquier ambiente.
+                    </p>
+                    <span class="spec-certification">UNE EN ISO 62</span>
                 </div>
                 
-                <div class="spec-category">
-                    <h3><i class="fas fa-flask"></i> Propiedades Físicas</h3>
-                    <table class="spec-table">
-                        <tr>
-                            <td>Densidad</td>
-                            <td>1.301 ± 0.003 g/cm³</td>
-                        </tr>
-                        <tr>
-                            <td>Absorción de agua (24h)</td>
-                            <td>0.10 ± 0.01 %</td>
-                        </tr>
-                        <tr>
-                            <td>Dureza Rockwell (escala R)</td>
-                            <td>25 ± 2 HRR</td>
-                        </tr>
-                        <tr>
-                            <td>Deformación en rotura</td>
-                            <td>7.2 ± 0.23 %</td>
-                        </tr>
-                        <tr>
-                            <td>Ciclos de uso estimados</td>
-                            <td>30-50 ciclos</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Applications -->
-    <section class="applications" id="aplicaciones">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">APLICACIONES</div>
-                <h2 class="section-title">Versatilidad en la construcción</h2>
-                <p class="section-description">Desde cimentaciones hasta infraestructura urbana, moolde se adapta a múltiples necesidades constructivas</p>
-            </div>
-            
-            <div class="applications-grid">
-                <div class="application-card">
-                    <div class="application-image">
-                        <i class="fas fa-home"></i>
+                <div class="spec-card fade-in">
+                    <div class="spec-icon">
+                        <i class="fas fa-hammer"></i>
                     </div>
-                    <div class="application-content">
-                        <h3>Encofrados y Moldes</h3>
-                        <p>Ideal para encofrados reutilizables y moldes de prefabricados con acabados de alta calidad y mayor durabilidad que la madera.</p>
-                        <div class="application-tags">
-                            <span class="tag">Zapatas</span>
-                            <span class="tag">Muros</span>
-                            <span class="tag">Columnas</span>
-                            <span class="tag">Prefabricados</span>
-                        </div>
+                    <h3 class="spec-title">Resistencia al Impacto</h3>
+                    <div>
+                        <span class="spec-value">33</span>
+                        <span class="spec-unit">kJ/m²</span>
                     </div>
+                    <p class="spec-description">
+                        Resistencia Charpy superior al doble de la madera tradicional. 
+                        Absorbe energía de impactos sin fracturarse.
+                    </p>
+                    <span class="spec-certification">UNE EN ISO 179-1</span>
                 </div>
                 
-                <div class="application-card">
-                    <div class="application-image">
-                        <i class="fas fa-building"></i>
+                <div class="spec-card fade-in">
+                    <div class="spec-icon">
+                        <i class="fas fa-weight-hanging"></i>
                     </div>
-                    <div class="application-content">
-                        <h3>Revestimientos</h3>
-                        <p>Excelente para revestimientos exteriores e interiores gracias a su resistencia a la humedad y estabilidad dimensional.</p>
-                        <div class="application-tags">
-                            <span class="tag">Fachadas</span>
-                            <span class="tag">Particiones</span>
-                            <span class="tag">Techos</span>
-                        </div>
+                    <h3 class="spec-title">Densidad</h3>
+                    <div>
+                        <span class="spec-value">1.301</span>
+                        <span class="spec-unit">g/cm³</span>
                     </div>
+                    <p class="spec-description">
+                        Aproximadamente 1/6 del peso del acero. Facilita transporte, 
+                        manipulación e instalación sin equipos especiales.
+                    </p>
+                    <span class="spec-certification">UNE EN ISO 1183-1</span>
                 </div>
                 
-                <div class="application-card">
-                    <div class="application-image">
-                        <i class="fas fa-road"></i>
+                <div class="spec-card fade-in">
+                    <div class="spec-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
                     </div>
-                    <div class="application-content">
-                        <h3>Infraestructura Urbana</h3>
-                        <p>Elementos urbanos duraderos que requieren resistencia a condiciones ambientales adversas.</p>
-                        <div class="application-tags">
-                            <span class="tag">Pasos de cebra</span>
-                            <span class="tag">Carriles bici</span>
-                            <span class="tag">Señalización</span>
-                        </div>
+                    <h3 class="spec-title">Módulo de Flexión</h3>
+                    <div>
+                        <span class="spec-value">578</span>
+                        <span class="spec-unit">MPa</span>
                     </div>
+                    <p class="spec-description">
+                        Rigidez adecuada para aplicaciones de encofrado con sistemas 
+                        de refuerzo apropiados.
+                    </p>
+                    <span class="spec-certification">UNE EN ISO 178</span>
                 </div>
                 
-                <div class="application-card">
-                    <div class="application-image">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="spec-card fade-in">
+                    <div class="spec-icon">
+                        <i class="fas fa-arrows-alt-v"></i>
                     </div>
-                    <div class="application-content">
-                        <h3>Protección de Estructuras</h3>
-                        <p>Capa protectora en hormigón armado aumentando durabilidad en ambientes agresivos.</p>
-                        <div class="application-tags">
-                            <span class="tag">Marinos</span>
-                            <span class="tag">Industriales</span>
-                        </div>
+                    <h3 class="spec-title">Resistencia a la Flexión</h3>
+                    <div>
+                        <span class="spec-value">17.0</span>
+                        <span class="spec-unit">MPa</span>
                     </div>
+                    <p class="spec-description">
+                        Capacidad para soportar cargas moderadas en aplicaciones 
+                        de encofrado y revestimiento.
+                    </p>
+                    <span class="spec-certification">UNE EN ISO 178</span>
                 </div>
                 
-                <div class="application-card">
-                    <div class="application-image">
-                        <i class="fas fa-industry"></i>
+                <div class="spec-card fade-in">
+                    <div class="spec-icon">
+                        <i class="fas fa-arrows-alt-h"></i>
                     </div>
-                    <div class="application-content">
-                        <h3>Construcción Modular</h3>
-                        <p>Sistemas modulares para construcción rápida y eficiente de proyectos residenciales e industriales.</p>
-                        <div class="application-tags">
-                            <span class="tag">Vivienda</span>
-                            <span class="tag">Almacenes</span>
-                        </div>
+                    <h3 class="spec-title">Módulo de Tracción</h3>
+                    <div>
+                        <span class="spec-value">443</span>
+                        <span class="spec-unit">MPa</span>
                     </div>
-                </div>
-                
-                <div class="application-card">
-                    <div class="application-image">
-                        <i class="fas fa-water"></i>
-                    </div>
-                    <div class="application-content">
-                        <h3>Ambientes Húmedos</h3>
-                        <p>Resistencia excepcional en plantas de tratamiento, piscinas y estructuras en contacto con agua.</p>
-                        <div class="application-tags">
-                            <span class="tag">Tratamiento</span>
-                            <span class="tag">Piscinas</span>
-                        </div>
-                    </div>
+                    <p class="spec-description">
+                        Deformación en rotura de 7.2% indica buena capacidad 
+                        de absorción de energía antes del fallo.
+                    </p>
+                    <span class="spec-certification">UNE EN ISO 527</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Reinforcement Systems -->
-    <section id="refuerzos">
+    <section class="section section-alt" id="sistemas">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">SISTEMAS DE REFUERZO</div>
-                <h2 class="section-title">Adaptabilidad estructural</h2>
-                <p class="section-description">Sistemas de refuerzo innovadores para proyectos de cualquier magnitud</p>
+                <div class="section-label">Tecnología Modular</div>
+                <h2 class="section-title">Sistemas de Refuerzo Inteligentes</h2>
+                <p class="section-description">
+                    Cuatro configuraciones de refuerzo para adaptarse a cualquier escala de proyecto, 
+                    desde zapatas residenciales hasta muros de gran altura.
+                </p>
             </div>
             
-            <div class="reinforcement-grid">
-                <div class="reinforcement-card">
-                    <div class="reinforcement-header">
-                        <div class="reinforcement-icon">
-                            <i class="fas fa-border-all"></i>
+            <div class="systems-grid">
+                <!-- System 1 -->
+                <div class="system-card fade-in">
+                    <div class="system-header">
+                        <span class="system-badge">Sistema 1</span>
+                        <h3 class="system-title">Marco Metálico Perimetral</h3>
+                        <p class="system-subtitle">Incremento de rigidez: 70-80%</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-border-style"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Marco Perimetral</h4>
+                                <p>Aluminio o acero galvanizado (2-3mm espesor) en todo el perímetro del panel</p>
+                            </div>
                         </div>
-                        <div class="reinforcement-title">
-                            <h3>Marco Metálico Perimetral</h3>
-                            <div class="reinforcement-subtitle">Incremento de rigidez 70-80%</div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Protección de Bordes</h4>
+                                <p>Protege contra daños mecánicos y facilita manipulación</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Uniones Rápidas</h4>
+                                <p>Sistema de conexión optimizado entre paneles</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Aplicaciones Ideales</h4>
+                                <p>Muros 3-5m, encofrados trepantes y deslizantes</p>
+                            </div>
                         </div>
                     </div>
-                    <ul class="reinforcement-features">
-                        <li><i class="fas fa-check"></i> Marco de aluminio o acero galvanizado en perímetro</li>
-                        <li><i class="fas fa-check"></i> Protección de bordes contra daños mecánicos</li>
-                        <li><i class="fas fa-check"></i> Facilita uniones entre paneles</li>
-                        <li><i class="fas fa-check"></i> Ideal para muros de 3-5 metros</li>
-                    </ul>
                 </div>
                 
-                <div class="reinforcement-card">
-                    <div class="reinforcement-header">
-                        <div class="reinforcement-icon">
-                            <i class="fas fa-grip-lines"></i>
+                <!-- System 2 -->
+                <div class="system-card fade-in">
+                    <div class="system-header">
+                        <span class="system-badge">Sistema 2</span>
+                        <h3 class="system-title">Nervaduras Posteriores</h3>
+                        <p class="system-subtitle">Incremento de rigidez: 120-150%</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-grip-lines-vertical"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Nervaduras 40-60mm</h4>
+                                <p>Refuerzos de aluminio, acero o mismo material del panel</p>
+                            </div>
                         </div>
-                        <div class="reinforcement-title">
-                            <h3>Nervaduras Posteriores</h3>
-                            <div class="reinforcement-subtitle">Incremento de rigidez 120-150%</div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Aumento de Inercia</h4>
+                                <p>Incremento significativo sin aumento de peso proporcional</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Patrón Personalizable</h4>
+                                <p>Retícula, cuadrícula o nervios según dirección de esfuerzos</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-th-large"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Aplicaciones Ideales</h4>
+                                <p>Losas, forjados y superficies extensas</p>
+                            </div>
                         </div>
                     </div>
-                    <ul class="reinforcement-features">
-                        <li><i class="fas fa-check"></i> Nervaduras de 40-60 mm de altura</li>
-                        <li><i class="fas fa-check"></i> Aumento de inercia sin peso significativo</li>
-                        <li><i class="fas fa-check"></i> Patrones personalizables según esfuerzos</li>
-                        <li><i class="fas fa-check"></i> Óptimo para losas y superficies extensas</li>
-                    </ul>
                 </div>
                 
-                <div class="reinforcement-card">
-                    <div class="reinforcement-header">
-                        <div class="reinforcement-icon">
-                            <i class="fas fa-th"></i>
+                <!-- System 3 -->
+                <div class="system-card fade-in">
+                    <div class="system-header">
+                        <span class="system-badge">Sistema 3</span>
+                        <h3 class="system-title">Alma de Panal</h3>
+                        <p class="system-subtitle">Incremento de rigidez: 200-250%</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-honeycomb"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Estructura Hexagonal</h4>
+                                <p>Alma tipo panal de abeja en aluminio o polímero de alta resistencia</p>
+                            </div>
                         </div>
-                        <div class="reinforcement-title">
-                            <h3>Alma de Panal</h3>
-                            <div class="reinforcement-subtitle">Incremento de rigidez 200-250%</div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Máxima Relación Rigidez/Peso</h4>
+                                <p>La configuración más eficiente entre todos los sistemas</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-fist-raised"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Resistencia a Cargas</h4>
+                                <p>Excelente comportamiento ante cargas puntuales y distribuidas</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-bezier-curve"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Aplicaciones Ideales</h4>
+                                <p>Doble curvatura, presiones >120 kPa, prefabricados complejos</p>
+                            </div>
                         </div>
                     </div>
-                    <ul class="reinforcement-features">
-                        <li><i class="fas fa-check"></i> Estructura interna hexagonal</li>
-                        <li><i class="fas fa-check"></i> Máxima relación rigidez/peso</li>
-                        <li><i class="fas fa-check"></i> Excelente resistencia a cargas puntuales</li>
-                        <li><i class="fas fa-check"></i> Ideal para elementos complejos</li>
-                    </ul>
                 </div>
                 
-                <div class="reinforcement-card">
-                    <div class="reinforcement-header">
-                        <div class="reinforcement-icon">
-                            <i class="fas fa-sitemap"></i>
+                <!-- System 4 -->
+                <div class="system-card fade-in">
+                    <div class="system-header">
+                        <span class="system-badge">Sistema 4</span>
+                        <h3 class="system-title">Sistema Híbrido</h3>
+                        <p class="system-subtitle">Para máximas exigencias</p>
+                    </div>
+                    <div class="system-content">
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Panel como Superficie</h4>
+                                <p>Plastic Board como contacto con hormigón, estructura externa portante</p>
+                            </div>
                         </div>
-                        <div class="reinforcement-title">
-                            <h3>Sistema Híbrido</h3>
-                            <div class="reinforcement-subtitle">Para máximas exigencias</div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Estructura Externa</h4>
+                                <p>Marco portante de acero o aluminio con conexiones ajustables</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Alta Capacidad</h4>
+                                <p>Soporta presiones superiores a 150 kPa sin deformación</p>
+                            </div>
+                        </div>
+                        <div class="system-feature">
+                            <div class="system-feature-icon">
+                                <i class="fas fa-city"></i>
+                            </div>
+                            <div class="system-feature-text">
+                                <h4>Aplicaciones Ideales</h4>
+                                <p>Muros >5m, presas, estribos de puentes, elementos masivos</p>
+                            </div>
                         </div>
                     </div>
-                    <ul class="reinforcement-features">
-                        <li><i class="fas fa-check"></i> Panel como superficie de contacto</li>
-                        <li><i class="fas fa-check"></i> Estructura portante de acero/aluminio</li>
-                        <li><i class="fas fa-check"></i> Capacidad para presiones >150 kPa</li>
-                        <li><i class="fas fa-check"></i> Perfecto para muros de gran altura</li>
-                    </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUEVA Technology -->
+    <section class="cueva-section" id="cueva">
+        <div class="container">
+            <div class="cueva-content">
+                <div class="section-header">
+                    <div class="section-label" style="color: var(--accent-teal);">Construction 4.0</div>
+                    <h2 class="section-title" style="color: var(--white);">Tecnología CUEVA</h2>
+                    <p class="section-description" style="color: var(--white); opacity: 0.9;">
+                        Sistema de trazabilidad completa basado en blockchain para certificación 
+                        automática y gestión inteligente del ciclo de vida.
+                    </p>
+                </div>
+                
+                <div class="cueva-grid">
+                    <div class="cueva-info">
+                        <h3>Componentes del Sistema</h3>
+                        <ul class="cueva-features">
+                            <li class="cueva-feature">
+                                <div class="cueva-feature-icon">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                                <div class="cueva-feature-text">
+                                    <h4>RFID Integrado</h4>
+                                    <p>Chip RFID único en cada panel para identificación y trazabilidad instantánea</p>
+                                </div>
+                            </li>
+                            <li class="cueva-feature">
+                                <div class="cueva-feature-icon">
+                                    <i class="fas fa-cubes"></i>
+                                </div>
+                                <div class="cueva-feature-text">
+                                    <h4>Tokenización NFT</h4>
+                                    <p>Cada panel tiene un NFT asociado con historial completo e inalterable</p>
+                                </div>
+                            </li>
+                            <li class="cueva-feature">
+                                <div class="cueva-feature-icon">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                                <div class="cueva-feature-text">
+                                    <h4>Conectividad IoT</h4>
+                                    <p>Protocolo MQTT para comunicación en tiempo real con sistemas BIM</p>
+                                </div>
+                            </li>
+                            <li class="cueva-feature">
+                                <div class="cueva-feature-icon">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="cueva-feature-text">
+                                    <h4>Certificación Automática</h4>
+                                    <p>Proof of Installation: certificación blockchain de cada instalación</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cueva-diagram">
+                        <h4 style="margin-bottom: 24px; font-size: 1.25rem;">Flujo de Trazabilidad</h4>
+                        <div class="blockchain-flow">
+                            <div class="flow-step">
+                                <div class="flow-number">1</div>
+                                <div class="flow-text">
+                                    <h5>Fabricación</h5>
+                                    <p>Registro de origen del plástico reciclado y parámetros de producción</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-number">2</div>
+                                <div class="flow-text">
+                                    <h5>Certificación</h5>
+                                    <p>Validación de especificaciones técnicas y emisión de NFT</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-number">3</div>
+                                <div class="flow-text">
+                                    <h5>Distribución</h5>
+                                    <p>Tracking GPS y registro de cadena de custodia</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-number">4</div>
+                                <div class="flow-text">
+                                    <h5>Instalación</h5>
+                                    <p>Proof of Installation automático en blockchain</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="flow-number">5</div>
+                                <div class="flow-text">
+                                    <h5>Uso & Mantenimiento</h5>
+                                    <p>Registro de ciclos de uso y Digital Twin actualizado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section" id="comparativa">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Análisis Comparativo</div>
+                <h2 class="section-title">moolde vs Materiales Tradicionales</h2>
+                <p class="section-description">
+                    Comparativa detallada de rendimiento en aplicaciones de encofrado
+                </p>
+            </div>
+            
+            <div class="comparison-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>moolde Plastic Board</th>
+                            <th>Tablero Contrachapado</th>
+                            <th>Ventaja</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Absorción de agua (24h)</td>
+                            <td>0,10%</td>
+                            <td>15-20%</td>
+                            <td class="advantage">moolde 150-200x mejor</td>
+                        </tr>
+                        <tr>
+                            <td>Ciclos de uso estimados</td>
+                            <td>30-50 ciclos</td>
+                            <td>5-10 ciclos</td>
+                            <td class="advantage">moolde 5-6x más durable</td>
+                        </tr>
+                        <tr>
+                            <td>Resistencia al impacto Charpy</td>
+                            <td>33 kJ/m²</td>
+                            <td>10-15 kJ/m²</td>
+                            <td class="advantage">moolde 2-3x superior</td>
+                        </tr>
+                        <tr>
+                            <td>Resistencia a álcalis (hormigón)</td>
+                            <td>Excelente</td>
+                            <td>Moderada</td>
+                            <td class="advantage">moolde</td>
+                        </tr>
+                        <tr>
+                            <td>Facilidad de limpieza</td>
+                            <td>Alta</td>
+                            <td>Baja</td>
+                            <td class="advantage">moolde</td>
+                        </tr>
+                        <tr>
+                            <td>Calidad de acabado</td>
+                            <td>Excelente y consistente</td>
+                            <td>Variable</td>
+                            <td class="advantage">moolde</td>
+                        </tr>
+                        <tr>
+                            <td>Trazabilidad blockchain</td>
+                            <td>Completa (CUEVA)</td>
+                            <td>No disponible</td>
+                            <td class="advantage">moolde única</td>
+                        </tr>
+                        <tr>
+                            <td>Módulo de flexión</td>
+                            <td>578 MPa</td>
+                            <td>6.000-10.000 MPa</td>
+                            <td class="disadvantage">Madera</td>
+                        </tr>
+                        <tr>
+                            <td>Densidad</td>
+                            <td>1,301 g/cm³</td>
+                            <td>0,5-0,7 g/cm³</td>
+                            <td class="disadvantage">Madera más ligera</td>
+                        </tr>
+                        <tr>
+                            <td>Costo inicial por m²</td>
+                            <td>35-45 €</td>
+                            <td>15-25 €</td>
+                            <td class="disadvantage">Madera</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Costo por uso</strong></td>
+                            <td><strong>0,7-1,5 €/m²</strong></td>
+                            <td><strong>1,5-5,0 €/m²</strong></td>
+                            <td class="advantage"><strong>moolde 40-70% menor</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
     <!-- Economic Analysis -->
-    <section class="economic" id="economia">
+    <section class="section section-alt" id="economia">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">ANÁLISIS ECONÓMICO</div>
-                <h2 class="section-title">Rentabilidad superior comprobada</h2>
+                <div class="section-label">ROI & Rentabilidad</div>
+                <h2 class="section-title">Análisis Económico</h2>
+                <p class="section-description">
+                    Aunque la inversión inicial es mayor, moolde genera ahorros significativos 
+                    a partir del 6º-8º uso, alcanzando 40-60% de ahorro al final de su vida útil
+                </p>
             </div>
             
-            <div class="economic-content">
-                <div class="economic-text">
-                    <h3>Ahorro a largo plazo del 40-60%</h3>
-                    <p>Aunque el costo inicial de moolde es 1.8-3.0 veces mayor que la madera tradicional, su excepcional durabilidad (30-50 usos vs 5-10 de la madera) resulta en un costo por uso significativamente menor.</p>
-                    <p>El punto de equilibrio se alcanza entre el 6º y 8º uso. A partir del 10º uso, el ahorro acumulado es del 15-20%, llegando al 40-60% al completar su ciclo de vida útil.</p>
+            <div class="economic-grid">
+                <div class="chart-container">
+                    <h3 class="chart-title">Costo Acumulado por Ciclos de Uso</h3>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar bar-moolde" style="height: 60px;"></div>
+                            <div class="bar bar-wood" style="height: 30px;"></div>
+                            <div class="bar-label">5 usos</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar bar-moolde" style="height: 90px;"></div>
+                            <div class="bar bar-wood" style="height: 100px;"></div>
+                            <div class="bar-label">10 usos</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar bar-moolde" style="height: 120px;"></div>
+                            <div class="bar bar-wood" style="height: 200px;"></div>
+                            <div class="bar-label">20 usos</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar bar-moolde" style="height: 150px;"></div>
+                            <div class="bar bar-wood" style="height: 300px;"></div>
+                            <div class="bar-label">30 usos</div>
+                        </div>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color legend-moolde"></div>
+                            <span>moolde</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-wood"></div>
+                            <span>Madera</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="economic-highlights">
+                    <div class="highlight-card">
+                        <h3>Punto de Equilibrio</h3>
+                        <p>El retorno de inversión se alcanza entre el 6º y 8º uso</p>
+                        <div class="highlight-stat">6-8 usos</div>
+                    </div>
                     
-                    <div class="economic-highlights">
-                        <div class="highlight-card">
-                            <div class="highlight-value">6-8</div>
-                            <div class="highlight-label">Usos para ROI</div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-value">0.7€</div>
-                            <div class="highlight-label">Costo por uso (m²)</div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-value">30-50</div>
-                            <div class="highlight-label">Ciclos de vida</div>
-                        </div>
-                        <div class="highlight-card">
-                            <div class="highlight-value">40-60%</div>
-                            <div class="highlight-label">Ahorro total</div>
-                        </div>
+                    <div class="highlight-card">
+                        <h3>Ahorro Acumulado</h3>
+                        <p>A partir del 10º uso, ahorro del 15-20% respecto a madera</p>
+                        <div class="highlight-stat">15-20%</div>
                     </div>
-                </div>
-                
-                <div class="comparison-chart">
-                    <h4>Comparativa de Costos Acumulados</h4>
-                    <div class="chart-bars">
-                        <div class="chart-row">
-                            <div class="chart-label">5 usos</div>
-                            <div class="chart-bar-container">
-                                <div class="chart-bar" style="width: 30%">
-                                    <span class="chart-value">37.5€</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-row">
-                            <div class="chart-label">10 usos</div>
-                            <div class="chart-bar-container">
-                                <div class="chart-bar" style="width: 45%">
-                                    <span class="chart-value">75€</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-row">
-                            <div class="chart-label">20 usos</div>
-                            <div class="chart-bar-container">
-                                <div class="chart-bar" style="width: 65%">
-                                    <span class="chart-value">150€</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-row">
-                            <div class="chart-label">30 usos</div>
-                            <div class="chart-bar-container">
-                                <div class="chart-bar" style="width: 80%">
-                                    <span class="chart-value">225€</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-row">
-                            <div class="chart-label">Madera (50 usos)</div>
-                            <div class="chart-bar-container">
-                                <div class="chart-bar alt" style="width: 100%">
-                                    <span class="chart-value">250€</span>
-                                </div>
-                            </div>
-                        </div>
+                    
+                    <div class="highlight-card">
+                        <h3>Ahorro Total</h3>
+                        <p>Al completar ciclo de vida (30-50 usos), ahorro total de 40-60%</p>
+                        <div class="highlight-stat">40-60%</div>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3>Beneficios Adicionales</h3>
+                        <ul style="margin-top: 16px; padding-left: 20px;">
+                            <li>Menor tiempo de limpieza entre usos</li>
+                            <li>Reducción en consumo de desencofrantes</li>
+                            <li>Mejor acabado reduce trabajos posteriores</li>
+                            <li>Valor residual 10-15% al fin de vida útil</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sustainability -->
-    <section id="sostenibilidad">
+    <!-- Applications -->
+    <section class="section" id="aplicaciones">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">SOSTENIBILIDAD</div>
-                <h2 class="section-title">Economía circular en acción</h2>
-                <p class="section-description">Transformamos residuos plásticos irreciclables en infraestructura duradera</p>
+                <div class="section-label">Casos de Uso</div>
+                <h2 class="section-title">Aplicaciones Versátiles</h2>
+                <p class="section-description">
+                    De encofrados residenciales a infraestructura crítica, 
+                    moolde se adapta a cualquier escala de proyecto
+                </p>
             </div>
             
-            <div class="sustainability-content">
-                <div class="sustainability-feature">
-                    <div class="sustainability-icon">
-                        <i class="fas fa-recycle"></i>
+            <div class="applications-grid">
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <i class="fas fa-cubes"></i>
                     </div>
-                    <h3>100% Reciclado</h3>
-                    <p>Fabricado exclusivamente con plásticos irreciclables que de otro modo irían a vertederos o incineración.</p>
-                </div>
-                
-                <div class="sustainability-feature">
-                    <div class="sustainability-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Huella de Carbono Reducida</h3>
-                    <p>70% menos emisiones de CO₂ comparado con producción de plástico virgen y materiales tradicionales.</p>
-                </div>
-                
-                <div class="sustainability-feature">
-                    <div class="sustainability-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Ciclo de Vida Extendido</h3>
-                    <p>30-50 ciclos de uso vs 5-10 de la madera, maximizando el valor del material reciclado.</p>
-                </div>
-            </div>
-            
-            <div class="lifecycle-diagram">
-                <h3>Análisis de Ciclo de Vida (LCA)</h3>
-                <div class="lifecycle-steps">
-                    <div class="lifecycle-step">
-                        <div class="lifecycle-step-icon">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
-                        <h4>1. Recolección</h4>
-                        <p>Residuos plásticos irreciclables</p>
-                    </div>
-                    <div class="lifecycle-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="lifecycle-step">
-                        <div class="lifecycle-step-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <h4>2. Procesamiento</h4>
-                        <p>Transformación en Plastic Board</p>
-                    </div>
-                    <div class="lifecycle-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="lifecycle-step">
-                        <div class="lifecycle-step-icon">
-                            <i class="fas fa-hard-hat"></i>
-                        </div>
-                        <h4>3. Uso</h4>
-                        <p>30-50 ciclos en construcción</p>
-                    </div>
-                    <div class="lifecycle-arrow">
-                        <i class="fas fa-arrow-right"></i>
-                    </div>
-                    <div class="lifecycle-step">
-                        <div class="lifecycle-step-icon">
-                            <i class="fas fa-redo"></i>
-                        </div>
-                        <h4>4. Reciclaje</h4>
-                        <p>Nuevo ciclo o valorización</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LEVEL(s) Framework -->
-    <section class="levels" id="levels">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">FRAMEWORK EUROPEO</div>
-                <h2 class="section-title">Alineados con LEVEL(s)</h2>
-            </div>
-            
-            <div class="levels-intro">
-                <p>LEVEL(s) es el marco europeo para evaluar el desempeño sostenible de los edificios. moolde contribuye directamente a múltiples indicadores LEVEL(s), demostrando nuestro compromiso con la construcción sostenible certificada.</p>
-            </div>
-            
-            <div class="levels-grid">
-                <div class="level-card">
-                    <div class="level-number">1</div>
-                    <h3>Emisiones de Gases de Efecto Invernadero</h3>
-                    <p>Reducción significativa de CO₂ mediante el uso de plástico reciclado en lugar de materiales vírgenes.</p>
-                    <ul class="level-indicators">
-                        <li><i class="fas fa-circle"></i> Huella de carbono del ciclo de vida</li>
-                        <li><i class="fas fa-circle"></i> Potencial de calentamiento global</li>
-                    </ul>
-                </div>
-                
-                <div class="level-card">
-                    <div class="level-number">2</div>
-                    <h3>Ciclos de Materiales Eficientes</h3>
-                    <p>Economía circular implementada mediante el uso de residuos plásticos y alta reutilización.</p>
-                    <ul class="level-indicators">
-                        <li><i class="fas fa-circle"></i> Uso de material reciclado</li>
-                        <li><i class="fas fa-circle"></i> Potencial de reciclaje</li>
-                        <li><i class="fas fa-circle"></i> Diseño para desmontaje</li>
-                    </ul>
-                </div>
-                
-                <div class="level-card">
-                    <div class="level-number">3</div>
-                    <h3>Uso Eficiente del Agua</h3>
-                    <p>Resistencia excepcional a la humedad (0.10% absorción) prolonga vida útil y reduce mantenimiento.</p>
-                    <ul class="level-indicators">
-                        <li><i class="fas fa-circle"></i> Durabilidad en ambientes húmedos</li>
-                        <li><i class="fas fa-circle"></i> Sin degradación por agua</li>
-                    </ul>
-                </div>
-                
-                <div class="level-card">
-                    <div class="level-number">4</div>
-                    <h3>Materiales Saludables</h3>
-                    <p>Material no tóxico, sin emisiones nocivas durante su vida útil.</p>
-                    <ul class="level-indicators">
-                        <li><i class="fas fa-circle"></i> Sin compuestos orgánicos volátiles</li>
-                        <li><i class="fas fa-circle"></i> Seguro para trabajadores</li>
-                    </ul>
-                </div>
-                
-                <div class="level-card">
-                    <div class="level-number">5</div>
-                    <h3>Adaptación y Resiliencia al Cambio Climático</h3>
-                    <p>Resistencia superior a condiciones climáticas adversas comparado con materiales tradicionales.</p>
-                    <ul class="level-indicators">
-                        <li><i class="fas fa-circle"></i> Resistencia a ciclos térmicos</li>
-                        <li><i class="fas fa-circle"></i> Durabilidad en climas extremos</li>
-                    </ul>
-                </div>
-                
-                <div class="level-card">
-                    <div class="level-number">6</div>
-                    <h3>Optimización de Costos del Ciclo de Vida</h3>
-                    <p>Ahorro del 40-60% a largo plazo mediante mayor durabilidad y múltiples reutilizaciones.</p>
-                    <ul class="level-indicators">
-                        <li><i class="fas fa-circle"></i> Menor costo por uso</li>
-                        <li><i class="fas fa-circle"></i> Reducción de mantenimiento</li>
-                        <li><i class="fas fa-circle"></i> Mayor vida útil</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Digital Product Passport -->
-    <section id="dpp">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">PASAPORTE DIGITAL DE PRODUCTO</div>
-                <h2 class="section-title">Cumplimiento con regulaciones UE</h2>
-                <p class="section-description">Trazabilidad completa mediante tecnología blockchain CUEVA</p>
-            </div>
-            
-            <div class="dpp-content">
-                <div class="dpp-visual">
-                    <div class="passport-icon">
-                        <i class="fas fa-id-card"></i>
-                        <div class="passport-qr">
-                            <i class="fas fa-qrcode"></i>
+                    <div class="application-content">
+                        <h3 class="application-title">Encofrados & Moldes</h3>
+                        <p class="application-description">
+                            Sistema modular reutilizable para encofrados temporales y moldes para prefabricados. 
+                            Excelente acabado superficial y facilidad de desmoldeo.
+                        </p>
+                        <div class="application-tags">
+                            <span class="tag">Zapatas</span>
+                            <span class="tag">Muros 3-5m</span>
+                            <span class="tag">Columnas</span>
+                            <span class="tag">Prefabricados</span>
                         </div>
                     </div>
-                    <p style="color: var(--steel-medium); line-height: 1.7;">Cada panel moolde incluye su Pasaporte Digital de Producto (DPP) conforme a las nuevas regulaciones europeas de sostenibilidad.</p>
                 </div>
                 
-                <div>
-                    <h3 style="font-size: 28px; margin-bottom: 32px; color: var(--steel-dark);">Información certificada en blockchain</h3>
-                    <ul class="dpp-features">
-                        <li>
-                            <div class="dpp-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="dpp-text">
-                                <h4>Origen del Material</h4>
-                                <p>Trazabilidad completa del plástico reciclado utilizado, desde su recolección hasta el producto final.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dpp-icon">
-                                <i class="fas fa-industry"></i>
-                            </div>
-                            <div class="dpp-text">
-                                <h4>Proceso de Fabricación</h4>
-                                <p>Registro inmutable de todas las etapas de producción con datos de consumo energético y emisiones.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dpp-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="dpp-text">
-                                <h4>Certificaciones</h4>
-                                <p>Acceso instantáneo a certificados de laboratorio, normativas cumplidas y sellos de calidad.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dpp-icon">
-                                <i class="fas fa-history"></i>
-                            </div>
-                            <div class="dpp-text">
-                                <h4>Historial de Uso</h4>
-                                <p>Registro de cada ciclo de uso, proyectos donde se ha utilizado y estado del material.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dpp-icon">
-                                <i class="fas fa-recycle"></i>
-                            </div>
-                            <div class="dpp-text">
-                                <h4>Fin de Vida</h4>
-                                <p>Instrucciones para reciclaje o valorización y registro de su disposición final.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- UN SDGs -->
-    <section class="sdg" id="ods">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">OBJETIVOS DE DESARROLLO SOSTENIBLE</div>
-                <h2 class="section-title">Contribución a los ODS de la ONU</h2>
-                <p class="section-description">moolde está alineado con los Objetivos de Desarrollo Sostenible de las Naciones Unidas</p>
-            </div>
-            
-            <div class="sdg-grid">
-                <div class="sdg-card">
-                    <div class="sdg-header sdg-9">
-                        <div class="sdg-number">9</div>
-                        <div class="sdg-title">Industria, Innovación e Infraestructura</div>
-                    </div>
-                    <div class="sdg-content">
-                        <p>Innovación en materiales de construcción mediante tecnología blockchain y economía circular.</p>
-                        <div class="sdg-impact">Infraestructura resiliente y sostenible</div>
-                    </div>
-                </div>
-                
-                <div class="sdg-card">
-                    <div class="sdg-header sdg-11">
-                        <div class="sdg-number">11</div>
-                        <div class="sdg-title">Ciudades y Comunidades Sostenibles</div>
-                    </div>
-                    <div class="sdg-content">
-                        <p>Construcción sostenible que reduce la huella ambiental de las ciudades.</p>
-                        <div class="sdg-impact">Urbanización inclusiva y sostenible</div>
-                    </div>
-                </div>
-                
-                <div class="sdg-card">
-                    <div class="sdg-header sdg-12">
-                        <div class="sdg-number">12</div>
-                        <div class="sdg-title">Producción y Consumo Responsables</div>
-                    </div>
-                    <div class="sdg-content">
-                        <p>Economía circular que transforma residuos en recursos mediante gestión eficiente.</p>
-                        <div class="sdg-impact">Reducción de residuos y gestión sostenible</div>
-                    </div>
-                </div>
-                
-                <div class="sdg-card">
-                    <div class="sdg-header sdg-13">
-                        <div class="sdg-number">13</div>
-                        <div class="sdg-title">Acción por el Clima</div>
-                    </div>
-                    <div class="sdg-content">
-                        <p>Reducción de emisiones de CO₂ mediante el uso de materiales reciclados.</p>
-                        <div class="sdg-impact">70% menos emisiones vs materiales vírgenes</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- R&D Section -->
-    <section id="rdi">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">INVESTIGACIÓN Y DESARROLLO</div>
-                <h2 class="section-title">Innovación continua</h2>
-                <p class="section-description">Colaboraciones con centros tecnológicos y universidades para mejorar constantemente nuestros productos</p>
-            </div>
-            
-            <div class="rdi-timeline">
-                <div class="timeline-line"></div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Desarrollo de Plastic Board</h3>
-                        <p>Investigación en formulaciones de plástico reciclado para optimizar propiedades mecánicas y durabilidad. Pruebas de laboratorio según normativas UNE EN ISO para validar rendimiento.</p>
-                    </div>
-                    <div style="flex: 1;"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div style="flex: 1;"></div>
-                    <div class="timeline-content">
-                        <h3>Integración Tecnología CUEVA</h3>
-                        <p>Implementación de chips blockchain para trazabilidad completa del ciclo de vida. Desarrollo de protocolos de certificación digital y cumplimiento con DPP europeo.</p>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Sistemas de Refuerzo Avanzados</h3>
-                        <p>Diseño y pruebas de sistemas de refuerzo para aplicaciones de gran magnitud. Optimización de alma de panal y estructuras híbridas.</p>
-                    </div>
-                    <div style="flex: 1;"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div style="flex: 1;"></div>
-                    <div class="timeline-content">
-                        <h3>Nuevas Aplicaciones</h3>
-                        <p>Investigación en aplicaciones innovadoras: encofrados inteligentes con sensores IoT, sistemas de climatización pasiva, y componentes modulares para construcción rápida.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="research-areas">
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h4>Nuevos Materiales</h4>
-                    <p>Exploración de nuevas mezclas de plásticos reciclados y aditivos para mejorar propiedades específicas.</p>
-                </div>
-                
-                <div class="research-card">
-                    <div class="research-icon">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h4>IoT y Sensores</h4>
-                    <p>Integración de sensores de temperatura, humedad y estrés estructural en los paneles.</p>
-                </div>
-                
-                <div class="research-card">
-                    <div class="research-icon">
+                <div class="application-card fade-in">
+                    <div class="application-image">
                         <i class="fas fa-building"></i>
                     </div>
-                    <h4>Construcción 4.0</h4>
-                    <p>Desarrollo de sistemas compatibles con robótica de construcción y fabricación automatizada.</p>
+                    <div class="application-content">
+                        <h3 class="application-title">Revestimientos & Fachadas</h3>
+                        <p class="application-description">
+                            Ideal para revestimientos interiores y exteriores. Resistencia excepcional 
+                            a humedad y estabilidad dimensional garantizada.
+                        </p>
+                        <div class="application-tags">
+                            <span class="tag">Fachadas ventiladas</span>
+                            <span class="tag">Particiones</span>
+                            <span class="tag">Áreas húmedas</span>
+                            <span class="tag">Techos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div class="application-content">
+                        <h3 class="application-title">Infraestructura Urbana</h3>
+                        <p class="application-description">
+                            Elementos durables para espacios públicos que requieren resistencia 
+                            a condiciones ambientales y bajo mantenimiento.
+                        </p>
+                        <div class="application-tags">
+                            <span class="tag">Pasos de cebra</span>
+                            <span class="tag">Carriles bici</span>
+                            <span class="tag">Señalización</span>
+                            <span class="tag">Mobiliario</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="application-card fade-in">
+                    <div class="application-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="application-content">
+                        <h3 class="application-title">Protección de Estructuras</h3>
+                        <p class="application-description">
+                            Capa protectora para hormigón armado en ambientes agresivos. 
+                            Aumenta durabilidad y reduce corrosión del acero de refuerzo.
+                        </p>
+                        <div class="application-tags">
+                            <span class="tag">Ambientes marinos</span>
+                            <span class="tag">Zonas industriales</span>
+                            <span class="tag">Tratamiento aguas</span>
+                            <span class="tag">Anticorrosión</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contacto">
+    <!-- CTA Section -->
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-label">CONTACTO</div>
-                <h2 class="section-title">¿Listo para innovar?</h2>
-                <p class="section-description">Hablemos sobre cómo moolde puede transformar tu próximo proyecto constructivo</p>
+            <div class="cta-content">
+                <h2>Construyamos el Futuro Sostenible</h2>
+                <p>
+                    Descubre cómo moolde puede transformar tus proyectos con tecnología blockchain, 
+                    sostenibilidad certificada y ahorro a largo plazo.
+                </p>
+                <a href="#contacto" class="btn btn-cta">Solicitar Demo & Presupuesto</a>
             </div>
-            
-            <form class="contact-form">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Empresa</label>
-                        <input type="text" placeholder="Nombre de la empresa">
-                    </div>
-                </div>
-                
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="correo@ejemplo.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Teléfono</label>
-                        <input type="tel" placeholder="+34 600 000 000">
-                    </div>
-                </div>
-                
-                <div class="form-group full">
-                    <label>Mensaje</label>
-                    <textarea placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">Enviar Consulta</button>
-            </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer" id="contacto">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>moolde</h3>
-                    <p>Construyendo el futuro con inteligencia sostenible. Transformamos residuos plásticos en infraestructura duradera mediante tecnología blockchain.</p>
+                    <p>
+                        Sistema de encofrado sostenible con tecnología blockchain. 
+                        Transformando la construcción hacia la economía circular.
+                    </p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Producto</h4>
-                    <ul>
-                        <li><a href="#sistema">Sistema moolde</a></li>
+                    <ul class="footer-links">
                         <li><a href="#especificaciones">Especificaciones</a></li>
+                        <li><a href="#sistemas">Sistemas de Refuerzo</a></li>
+                        <li><a href="#cueva">CUEVA Technology</a></li>
                         <li><a href="#aplicaciones">Aplicaciones</a></li>
-                        <li><a href="#refuerzos">Sistemas de Refuerzo</a></li>
+                        <li><a href="#">Certificaciones</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-links">
-                    <h4>Sostenibilidad</h4>
-                    <ul>
-                        <li><a href="#sostenibilidad">Economía Circular</a></li>
-                        <li><a href="#levels">Framework LEVEL(s)</a></li>
-                        <li><a href="#dpp">Pasaporte Digital</a></li>
-                        <li><a href="#ods">ODS ONU</a></li>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Catálogo Técnico</a></li>
+                        <li><a href="#">Casos de Éxito</a></li>
+                        <li><a href="#">Documentación BIM</a></li>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="#sobre">Sobre moolde</a></li>
-                        <li><a href="#rdi">I+D+i</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                    <ul class="footer-links">
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Sostenibilidad</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Partners</a></li>
                         <li><a href="#">Prensa</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 moolde by EDRO Innovation Systems. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
+                <p>&copy; 2025 moolde. Sistema de Encofrado Sostenible con Blockchain. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -2319,43 +1795,46 @@
             });
         });
 
-        // Intersection Observer for animations
+        // Animated bar chart on scroll
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.5,
             rootMargin: '0px 0px -100px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const chartObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    const bars = entry.target.querySelectorAll('.bar');
+                    bars.forEach(bar => {
+                        const height = bar.style.height;
+                        bar.style.height = '0';
+                        setTimeout(() => {
+                            bar.style.height = height;
+                        }, 100);
+                    });
+                    chartObserver.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all animated elements
-        document.querySelectorAll('.component-card, .application-card, .spec-category, .reinforcement-card, .sustainability-feature, .level-card, .sdg-card, .research-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
+        const chartContainer = document.querySelector('.bar-chart');
+        if (chartContainer) {
+            chartObserver.observe(chartContainer);
+        }
 
-        // Chart animation
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelectorAll('.chart-bar').forEach(bar => {
-                    bar.style.transition = 'width 1.5s ease';
-                });
-            }, 500);
-        });
+        // Fade in animations
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
-            this.reset();
+        document.querySelectorAll('.fade-in').forEach(el => {
+            fadeObserver.observe(el);
         });
     </script>
 </body>
