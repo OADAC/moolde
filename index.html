@@ -66,6 +66,20 @@
         .hero-header::before {
             content: '';
             position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-header::after {
+            content: '';
+            position: absolute;
             top: -50%;
             right: -10%;
             width: 600px;
@@ -74,6 +88,7 @@
             opacity: 0.1;
             border-radius: 50%;
             filter: blur(100px);
+            z-index: 1;
         }
         
         .hero-content {
@@ -444,6 +459,20 @@
         .cueva-section::before {
             content: '';
             position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .cueva-section::after {
+            content: '';
+            position: absolute;
             top: -50%;
             left: -10%;
             width: 600px;
@@ -452,6 +481,7 @@
             opacity: 0.1;
             border-radius: 50%;
             filter: blur(100px);
+            z-index: 1;
         }
         
         .cueva-content {
@@ -754,6 +784,26 @@
             justify-content: center;
             color: var(--white);
             font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .application-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .application-card:hover .application-image::after {
+            opacity: 1;
+        }
+        
+        .application-card:hover .application-image {
+            transform: scale(1.05);
         }
         
         .application-content {
@@ -936,6 +986,10 @@
             .systems-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .hero-visual {
+                margin-top: 40px !important;
+            }
         }
         
         @media (max-width: 768px) {
@@ -967,6 +1021,25 @@
             .specs-grid,
             .applications-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Responsive images */
+            [style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            [style*="grid-template-columns: repeat(2, 1fr)"],
+            [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            [style*="display: grid"][style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .hero-visual {
+                margin-top: 40px !important;
+                border-radius: 12px !important;
             }
         }
     </style>
@@ -1019,6 +1092,9 @@
                         <span class="stat-label">Ahorro a Largo Plazo</span>
                     </div>
                 </div>
+            </div>
+            <div class="hero-visual" style="margin-top: 60px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&q=80" alt="Sistema de construcción sostenible" style="width: 100%; height: auto; display: block;">
             </div>
         </div>
     </header>
@@ -1130,6 +1206,33 @@
                         de absorción de energía antes del fallo.
                     </p>
                     <span class="spec-certification">UNE EN ISO 527</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Visual Section -->
+    <section class="section" style="padding: 0; background: var(--primary-dark);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 500px;">
+            <div style="background-image: url('https://images.unsplash.com/photo-1590959651373-a3db0f38a961?w=1200&q=80'); background-size: cover; background-position: center;"></div>
+            <div style="display: flex; align-items: center; padding: 80px; color: var(--white);">
+                <div>
+                    <h3 style="font-size: 2rem; margin-bottom: 24px;">De Residuo a Recurso</h3>
+                    <p style="font-size: 1.125rem; opacity: 0.9; line-height: 1.8;">
+                        Cada panel moolde transforma plástico irreciclable que iría a vertedero en 
+                        un sistema de construcción certificado y trazable. Economía circular en acción, 
+                        con tecnología blockchain que garantiza transparencia total.
+                    </p>
+                    <div style="margin-top: 32px; display: flex; gap: 48px;">
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-teal);">15-25 años</div>
+                            <div style="font-size: 0.875rem; opacity: 0.8; margin-top: 8px;">Vida útil estimada</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; font-weight: 800; color: var(--green);">100%</div>
+                            <div style="font-size: 0.875rem; opacity: 0.8; margin-top: 8px;">Material reciclado</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1451,6 +1554,43 @@
                 </p>
             </div>
             
+            <!-- Visual Comparison -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 48px 0; max-width: 1000px; margin-left: auto; margin-right: auto;">
+                <div style="background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); text-align: center; border: 3px solid var(--accent-teal);">
+                    <img src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?w=400&q=80" 
+                         alt="moolde panel" 
+                         style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 24px;">
+                    <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 16px;">moolde Plastic Board</h3>
+                    <div style="display: flex; justify-content: space-around; margin-top: 24px;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-teal);">30-50</div>
+                            <div style="font-size: 0.875rem; color: var(--dark-gray);">ciclos</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--accent-teal);">0.10%</div>
+                            <div style="font-size: 0.875rem; color: var(--dark-gray);">agua</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); text-align: center; border: 3px solid var(--medium-gray);">
+                    <img src="https://images.unsplash.com/photo-1611081849516-9a32c72f8d97?w=400&q=80" 
+                         alt="madera tradicional" 
+                         style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 24px;">
+                    <h3 style="font-size: 1.5rem; color: var(--dark-gray); margin-bottom: 16px;">Madera Tradicional</h3>
+                    <div style="display: flex; justify-content: space-around; margin-top: 24px;">
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--coral);">5-10</div>
+                            <div style="font-size: 0.875rem; color: var(--dark-gray);">ciclos</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2rem; font-weight: 800; color: var(--coral);">15-20%</div>
+                            <div style="font-size: 0.875rem; color: var(--dark-gray);">agua</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="comparison-wrapper">
                 <table class="comparison-table">
                     <thead>
@@ -1630,8 +1770,7 @@
             
             <div class="applications-grid">
                 <div class="application-card fade-in">
-                    <div class="application-image">
-                        <i class="fas fa-cubes"></i>
+                    <div class="application-image" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="application-content">
                         <h3 class="application-title">Encofrados & Moldes</h3>
@@ -1649,8 +1788,7 @@
                 </div>
                 
                 <div class="application-card fade-in">
-                    <div class="application-image">
-                        <i class="fas fa-building"></i>
+                    <div class="application-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="application-content">
                         <h3 class="application-title">Revestimientos & Fachadas</h3>
@@ -1668,8 +1806,7 @@
                 </div>
                 
                 <div class="application-card fade-in">
-                    <div class="application-image">
-                        <i class="fas fa-road"></i>
+                    <div class="application-image" style="background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="application-content">
                         <h3 class="application-title">Infraestructura Urbana</h3>
@@ -1687,8 +1824,7 @@
                 </div>
                 
                 <div class="application-card fade-in">
-                    <div class="application-image">
-                        <i class="fas fa-shield-alt"></i>
+                    <div class="application-image" style="background-image: url('https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80'); background-size: cover; background-position: center;">
                     </div>
                     <div class="application-content">
                         <h3 class="application-title">Protección de Estructuras</h3>
@@ -1708,9 +1844,145 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Success Cases Section -->
+    <section class="section section-alt">
         <div class="container">
+            <div class="section-header">
+                <div class="section-label">Proyectos Reales</div>
+                <h2 class="section-title">moolde en Acción</h2>
+                <p class="section-description">
+                    Casos de éxito en construcción residencial, comercial e infraestructura
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px;">
+                <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12);">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" 
+                         alt="Proyecto residencial" 
+                         style="width: 100%; height: 300px; object-fit: cover;">
+                    <div style="padding: 32px;">
+                        <div style="display: inline-block; padding: 6px 12px; background: var(--light-gray); border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 16px;">RESIDENCIAL</div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 16px;">Viviendas Sostenibles - Menorca</h3>
+                        <p style="font-size: 0.9375rem; color: var(--dark-gray); opacity: 0.8; margin-bottom: 24px;">
+                            45 viviendas unifamiliares con encofrado moolde. Reducción del 35% en tiempos de construcción 
+                            y ahorro del 28% en costos de encofrado.
+                        </p>
+                        <div style="display: flex; gap: 32px;">
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-teal);">42</div>
+                                <div style="font-size: 0.875rem; color: var(--dark-gray);">Ciclos de uso</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-teal);">35%</div>
+                                <div style="font-size: 0.875rem; color: var(--dark-gray);">Tiempo ahorrado</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-teal);">28%</div>
+                                <div style="font-size: 0.875rem; color: var(--dark-gray);">Ahorro costos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12);">
+                    <img src="https://images.unsplash.com/photo-1582563337423-fb65cf686a63?w=800&q=80" 
+                         alt="Proyecto infraestructura" 
+                         style="width: 100%; height: 300px; object-fit: cover;">
+                    <div style="padding: 32px;">
+                        <div style="display: inline-block; padding: 6px 12px; background: var(--light-gray); border-radius: 6px; font-size: 0.75rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 16px;">INFRAESTRUCTURA</div>
+                        <h3 style="font-size: 1.5rem; color: var(--primary-dark); margin-bottom: 16px;">Muro de Contención - Piedrahita</h3>
+                        <p style="font-size: 0.9375rem; color: var(--dark-gray); opacity: 0.8; margin-bottom: 24px;">
+                            Sistema híbrido para muro de 8m de altura. Primera aplicación de CUEVA technology 
+                            con certificación blockchain en tiempo real.
+                        </p>
+                        <div style="display: flex; gap: 32px;">
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-teal);">8m</div>
+                                <div style="font-size: 0.875rem; color: var(--dark-gray);">Altura muro</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-teal);">100%</div>
+                                <div style="font-size: 0.875rem; color: var(--dark-gray);">Trazabilidad</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-teal);">NFT</div>
+                                <div style="font-size: 0.875rem; color: var(--dark-gray);">Certificado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Process Gallery -->
+    <section class="section" style="background: var(--light-gray); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">El Proceso Completo</div>
+                <h2 class="section-title">De Plástico Reciclado a Construcción Certificada</h2>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px;">
+                <div style="position: relative; border-radius: 12px; overflow: hidden; height: 300px;">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=80" 
+                         alt="Reciclaje de plástico" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 24px; color: white;">
+                        <h4 style="font-size: 1.125rem; margin-bottom: 8px;">1. Material Reciclado</h4>
+                        <p style="font-size: 0.875rem; opacity: 0.9;">Transformación de plástico irreciclable</p>
+                    </div>
+                </div>
+                
+                <div style="position: relative; border-radius: 12px; overflow: hidden; height: 300px;">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80" 
+                         alt="Fabricación" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 24px; color: white;">
+                        <h4 style="font-size: 1.125rem; margin-bottom: 8px;">2. Fabricación Modular</h4>
+                        <p style="font-size: 0.875rem; opacity: 0.9;">Paneles certificados con RFID integrado</p>
+                    </div>
+                </div>
+                
+                <div style="position: relative; border-radius: 12px; overflow: hidden; height: 300px;">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" 
+                         alt="Instalación" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 24px; color: white;">
+                        <h4 style="font-size: 1.125rem; margin-bottom: 8px;">3. Instalación</h4>
+                        <p style="font-size: 0.875rem; opacity: 0.9;">Montaje rápido con certificación blockchain</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px;">
+                <div style="position: relative; border-radius: 12px; overflow: hidden; height: 350px;">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&q=80" 
+                         alt="Estructura terminada" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 32px; color: white;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 8px;">4. Estructura Completa</h4>
+                        <p style="font-size: 0.9375rem; opacity: 0.9;">30-50 ciclos de reutilización garantizados</p>
+                    </div>
+                </div>
+                
+                <div style="position: relative; border-radius: 12px; overflow: hidden; height: 350px;">
+                    <img src="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=800&q=80" 
+                         alt="Trazabilidad digital" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 32px; color: white;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 8px;">5. Trazabilidad Total</h4>
+                        <p style="font-size: 0.9375rem; opacity: 0.9;">Ciclo de vida completo en blockchain</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80'); background-size: cover; background-position: center; position: relative;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(78, 205, 196, 0.95) 0%, rgba(149, 225, 211, 0.95) 100%);"></div>
+        <div class="container" style="position: relative; z-index: 2;">
             <div class="cta-content">
                 <h2>Construyamos el Futuro Sostenible</h2>
                 <p>
@@ -1724,6 +1996,58 @@
 
     <!-- Footer -->
     <footer class="footer" id="contacto">
+        <div style="background: white; padding: 60px 0; border-bottom: 1px solid var(--medium-gray);">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 48px;">
+                    <div class="section-label" style="color: var(--primary-dark);">Confianza & Certificación</div>
+                    <h2 class="section-title" style="color: var(--primary-dark);">Certificado y Respaldado</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; align-items: center; opacity: 0.7;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 12px;">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div style="font-weight: 600; color: var(--primary-dark);">AIJU</div>
+                        <div style="font-size: 0.875rem; color: var(--dark-gray);">Laboratorio Certificado</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 12px;">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div style="font-weight: 600; color: var(--primary-dark);">UNE EN ISO</div>
+                        <div style="font-size: 0.875rem; color: var(--dark-gray);">Normativas Europeas</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 12px;">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div style="font-weight: 600; color: var(--primary-dark);">EU LEVEL(s)</div>
+                        <div style="font-size: 0.875rem; color: var(--dark-gray);">Sostenibilidad</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 12px;">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div style="font-weight: 600; color: var(--primary-dark);">Blockchain</div>
+                        <div style="font-size: 0.875rem; color: var(--dark-gray);">CUEVA Technology</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 3rem; color: var(--primary-blue); margin-bottom: 12px;">
+                            <i class="fas fa-globe-europe"></i>
+                        </div>
+                        <div style="font-weight: 600; color: var(--primary-dark);">ODS ONU</div>
+                        <div style="font-size: 0.875rem; color: var(--dark-gray);">9, 11, 12, 13</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: var(--primary-dark); color: white; padding: 80px 0 40px;">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
@@ -1777,6 +2101,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 moolde. Sistema de Encofrado Sostenible con Blockchain. Todos los derechos reservados.</p>
             </div>
+        </div>
         </div>
     </footer>
 
